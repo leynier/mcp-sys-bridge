@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/leynier-mcp-sys-bridge-badge.png)](https://mseep.ai/app/leynier-mcp-sys-bridge)
+
 # MCP System Bridge
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)

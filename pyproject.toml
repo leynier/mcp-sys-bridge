@@ -1,7 +1,7 @@
 [project]
 name = "mcp-sys-bridge"
-version = "0.1.4"
-description = "An implementation of the Model Context Protocol (MCP), acting as a simple bridge to native OS functionalities like clipboard management and URL handling."
+version = "0.1.5"
+description = "An implementation of the Model Context Protocol (MCP), acting as a simple bridge to native OS functionalities like clipboard management, URL handling, and system notifications."
 authors = [
     { name = "Leynier Gutiérrez González", email = "leynier41@gmail.com" },
 ]
@@ -38,7 +38,7 @@ classifiers = [
 ]
 requires-python = ">=3.12"
 
-dependencies = ["fastmcp>=2.7.0", "pydantic>=2.11.5", "pyperclip>=1.9.0"]
+dependencies = ["fastmcp>=2.7.0", "plyer>=2.1.0", "pydantic>=2.11.5", "pyperclip>=1.9.0"]
 
 [dependency-groups]
 dev = ["ruff>=0.11.13"]

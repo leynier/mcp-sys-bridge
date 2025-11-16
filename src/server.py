@@ -55,7 +55,6 @@ def send_notification(
     title: str,
     message: str,
     app_name: str | None = None,
-    app_icon: str | None = None,
     timeout: int = 10,
 ) -> str:
     """
@@ -68,8 +67,6 @@ def send_notification(
         title: The title of the notification (required)
         message: The message body of the notification (required)
         app_name: The name of the application sending the notification (optional)
-        app_icon: Path to an icon file to display with the notification (optional).
-                  On Windows, must be a .ico file. On macOS and Linux, supports .png, .jpg, etc.
         timeout: Duration in seconds to display the notification (default: 10)
 
     Returns:
@@ -88,9 +85,6 @@ def send_notification(
 
         if app_name:
             notification_params["app_name"] = app_name
-
-        if app_icon:
-            notification_params["app_icon"] = app_icon
 
         notification.notify(**notification_params)
         return f"Notification sent successfully: '{title}'"

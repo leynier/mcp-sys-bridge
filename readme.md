@@ -74,7 +74,7 @@ uvx mcp-sys-bridge
 
 - `open_urls` — open a list of URLs in the default browser.
 - `copy_to_clipboard` — copy text to the clipboard.
-- `send_notification` — send a native system notification with customizable title, message, app name, icon, and timeout.
+- `send_notification` — send a native system notification with customizable title, message, app name, and timeout.
 - `get_current_date_info` — return rich information about the current date such as day number, week number, quarter and more.
 
 ---

@@ -6,6 +6,7 @@ from urllib.parse import urlparse, urlunparse
 import pyperclip
 from fastmcp import FastMCP
 from mcp.types import ToolAnnotations
+from plyer import notification
 
 from .models import DateInfo
 
@@ -47,6 +48,48 @@ def copy_to_clipboard(text: str) -> str:
         return "Text copied to clipboard successfully."
     except Exception as e:
         return f"Error copying text to clipboard: {e}"
+
+
+@mcp.tool(annotations=ToolAnnotations(readOnlyHint=True))
+def send_notification(
+    title: str,
+    message: str,
+    app_name: str | None = None,
+    timeout: int = 10,
+) -> str:
+    """
+    Send a system notification.
+
+    Displays a native operating system notification with the specified title and message.
+    Works across Windows, macOS, and Linux platforms.
+
+    Args:
+        title: The title of the notification (required)
+        message: The message body of the notification (required)
+        app_name: The name of the application sending the notification (optional)
+        timeout: Duration in seconds to display the notification (default: 10)
+
+    Returns:
+        A success message if the notification was sent successfully, or an error message if it failed.
+
+    Examples:
+        send_notification("Task Complete", "Your build has finished successfully")
+        send_notification("Warning", "Low disk space detected", app_name="System Monitor", timeout=5)
+    """
+    try:
+        notification_params = {
+            "title": title,
+            "message": message,
+            "timeout": timeout,
+        }
+
+        if app_name:
+            notification_params["app_name"] = app_name
+
+        notification.notify(**notification_params)
+        return f"Notification sent successfully: '{title}'"
+    except Exception as e:
+        return f"Error sending notification: {e}"
 
 
 @mcp.tool(annotations=ToolAnnotations(readOnlyHint=True))

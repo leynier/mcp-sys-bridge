@@ -35,6 +35,7 @@ A bridge implementation of the **Model Context Protocol (MCP)** that exposes nat
 
 * 🚀 **URL Opening** — open one or multiple URLs in the default browser.
 * 📋 **Clipboard Support** — copy text directly to the clipboard.
+* 🔔 **System Notifications** — send native OS notifications (Windows, macOS, Linux).
 * 📆 **Date Info** — retrieve detailed information about the current date and time.
 
 ---
@@ -73,11 +74,17 @@ uvx mcp-sys-bridge
 
 - `open_urls` — open a list of URLs in the default browser.
 - `copy_to_clipboard` — copy text to the clipboard.
+- `send_notification` — send a native system notification with customizable title, message, app name, and timeout.
 - `get_current_date_info` — return rich information about the current date such as day number, week number, quarter and more.
 
 ---
 
 ## Changelog
+
+### 0.1.5
+
+- Added `send_notification` tool to send native system notifications across Windows, macOS, and Linux.
+- Added `plyer` dependency for cross-platform notification support.
 
 ### 0.1.4
 

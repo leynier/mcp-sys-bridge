@@ -50,7 +50,7 @@ def copy_to_clipboard(text: str) -> str:
         return f"Error copying text to clipboard: {e}"
 
 
-@mcp.tool(annotations=ToolAnnotations(readOnlyHint=False))
+@mcp.tool(annotations=ToolAnnotations(readOnlyHint=True))
 def send_notification(
     title: str,
     message: str,

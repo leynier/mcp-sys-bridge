@@ -1,8 +1,21 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
+
+
+class UrlOpenResult(BaseModel):
+    """Result of trying to open one requested URL."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    requested_url: str
+    normalized_url: str | None
+    opened: bool
+    error: str | None
 
 
 class DateInfo(BaseModel):
-    """Type definition for date information returned by get_current_date_info."""
+    """Date and time information returned by get_current_date_info."""
+
+    model_config = ConfigDict(extra="forbid")
 
     full_datetime: str
     iso_date: str
@@ -27,3 +40,5 @@ class DateInfo(BaseModel):
     minute: int
     second: int
     microsecond: int
+    timezone_name: str | None
+    utc_offset: str

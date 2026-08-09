@@ -1,6 +1,6 @@
 [project]
 name = "mcp-sys-bridge"
-version = "0.1.5"
+version = "0.2.0"
 description = "An implementation of the Model Context Protocol (MCP), acting as a simple bridge to native OS functionalities like clipboard management, URL handling, and system notifications."
 authors = [
     { name = "Leynier Gutiérrez González", email = "leynier41@gmail.com" },
@@ -38,13 +38,24 @@ classifiers = [
 ]
 requires-python = ">=3.12"
 
-dependencies = ["fastmcp>=2.7.0", "plyer>=2.1.0", "pydantic>=2.11.5", "pyperclip>=1.9.0"]
+dependencies = [
+    "fastmcp>=3.4.6,<4",
+    "mcp>=1.29.0,<2",
+    "plyer>=2.1.0,<3",
+    "pydantic>=2.13.4,<3",
+    "pyperclip>=1.11.0,<2",
+]
 
 [dependency-groups]
-dev = ["ruff>=0.11.13"]
+dev = [
+    "pip-audit>=2.9.0",
+    "pytest>=8.4.0,<10",
+    "pytest-cov>=6.2.0,<8",
+    "ruff>=0.16.2",
+]
 
 [project.scripts]
-mcp-sys-bridge = "src.server:main"
+mcp-sys-bridge = "mcp_sys_bridge.server:main"
 
 [project.urls]
 homepage = "https://github.com/leynier/mcp-sys-bridge"
@@ -58,4 +69,17 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["mcp_sys_bridge"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=mcp_sys_bridge",
+    "--cov-branch",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+    "--cov-fail-under=100",
+]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"

@@ -39,10 +39,14 @@ classifiers = [
 requires-python = ">=3.12"
 
 dependencies = [
-    "fastmcp>=3.4.6,<4",
-    "mcp>=1.29.0,<2",
+    # Keep runtime security floors in wheel metadata as well as the lockfile.
+    "certifi>=2026.10.19",
+    "fastmcp>=3.4.10,<4",
+    "mcp>=1.30.0,<2",
+    "opentelemetry-api>=1.45.1",
     "plyer>=2.1.0,<3",
     "pydantic>=2.13.4,<3",
+    "pyjwt>=2.15.0,<3",
     "pyperclip>=1.11.0,<2",
 ]
 
@@ -83,3 +87,11 @@ testpaths = ["tests"]
 
 [tool.ruff]
 target-version = "py312"
+
+[tool.uv]
+# Security floors for development-only transitive dependencies.
+constraint-dependencies = [
+    "filelock>=4.2.1",
+    "pip>=26.2.2",
+    "urllib3>=2.8.0",
+]
